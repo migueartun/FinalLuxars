@@ -25,10 +25,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository and report submodule
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          submodules: true
+
+      - name: Fetch application repository
+        run: git clone --depth 1 https://github.com/migueartun/luxars_final.git luxars_App
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
